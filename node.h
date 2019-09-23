@@ -9,6 +9,7 @@ class Iterator;
 
 template <typename T>
 class Node {
+	Node(T data) : data(data), left(nullptr), right(nullptr){}
     T data;
     Node<T> *left;
     Node<T> *right;
