@@ -12,18 +12,7 @@ void Tester::execute() {
 
 template <typename T>
 void Tester::testBSFTree(Mocker mocker, vector<T> elements) {
-    BSTree<T> binary;
-    binary.insert(14);
-    binary.insert(20);
-    binary.insert(8);
-    binary.insert(11);
-    binary.insert(25);
-    binary.insert(7);
-    binary.insert(24);
-    binary.insert(27);
-
-
-    binary.traversePreOrder();
+    
     BSTree<T> *test = new BSTree<T>;
     for (int j = 0; j < elements.size(); ++j) {
         test->insert(elements[j]);
@@ -31,7 +20,6 @@ void Tester::testBSFTree(Mocker mocker, vector<T> elements) {
     }
    
     sortAndPrune(elements);
-
     ASSERT(elements.size() == test->size(), "There is a problem with the insert or size");
 /*
     unsigned int toRemove = mocker.generateRandomInt(1, elements.size());
