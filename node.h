@@ -11,8 +11,8 @@ template <typename T>
 class Node {
 	Node(T data) : data(data), left(nullptr), right(nullptr){}
     T data;
-    Node<T> *left;
-    Node<T> *right;
+    Node<T> *left = nullptr;
+    Node<T> *right = nullptr;
 
     template<class>
     friend class BSTree; 

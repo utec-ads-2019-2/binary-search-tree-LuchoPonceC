@@ -19,9 +19,9 @@ void Tester::testBSFTree(Mocker mocker, vector<T> elements) {
         ASSERT(test->find(elements[j]), "There is a problem with the insert or find");
     }
    
-    sortAndPrune(elements);
+    //sortAndPrune(elements);
     ASSERT(elements.size() == test->size(), "There is a problem with the insert or size");
-/*
+
     unsigned int toRemove = mocker.generateRandomInt(1, elements.size());
     for (int j = 0; j < toRemove; ++j) {
         unsigned int index = mocker.generateRandomInt(0, elements.size() - 1);
@@ -30,7 +30,7 @@ void Tester::testBSFTree(Mocker mocker, vector<T> elements) {
         test->remove(temp);
         ASSERT(!test->find(temp), "There is a problem with the remove or find");
     }
-
+/*
     ASSERT(elements.size() == test->size(), "There is a problem with the remove or size");
 
     auto it = test->begin();

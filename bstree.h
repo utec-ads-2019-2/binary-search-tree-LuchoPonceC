@@ -64,27 +64,46 @@ class BSTree {
 
         void remove(Node<T> **& current, T data){
 
-            Node<T> **temp = current;
-
+            
+            Node<T> *temp2 = *current;
             if((*current)->left != nullptr && ((*current)->right) == nullptr){
                 
-                *current = (*current)->left;
+                *current = ((*current)->left);
+                //*current = nullptr;
+
             }
             else if((*current)->left == nullptr && ((*current)->right) != nullptr){
                 
-                *current = (*current)->right;
+                *current = ((*current)->right);
+                //*current = nullptr;
+
             }
 
-            else if((*current)->left != nullptr && ((*current)->right) != nullptr){
+            else if((*current)->left == nullptr && ((*current)->right) == nullptr){
                 
-                temp = getMax(current);
-                swap((*temp)->data,(*current)->data);
+                *current = nullptr;
 
             }
             
 
-            delete *temp;
-            *current = nullptr;
+            else if((*current)->left != nullptr && ((*current)->right) != nullptr){
+                Node<T> **temp = current;
+                temp = getMax(current);
+                temp2 = *temp;
+
+                swap((*temp)->data,(*current)->data);
+
+                current = temp;
+                if((*current)){
+                    *current = ((*current)->left);
+                }
+
+
+            }
+            
+            delete temp2;
+
+            
         }
 
         Node<T>** getMax(Node <T> **temp){
@@ -195,30 +214,15 @@ class BSTree {
         }
 
 
-        void moreLeft(Node<T> **&current){
-            if((*current)->left){
-                current = &((*current)->left);
-                moreLeft(current);
-            }
-        }
-
-        void moreRight(Node<T> **&current){
-            if((*current)->right){
-                current = &((*current)->right);
-                moreRight(current);
-            }
-        }
-
         Iterator<T> begin() {
             // TODO
-            Node<T> **current = &this->root;
-            moreLeft(current);
-            return *current;
+            
+            return Iterator<T>(this->root);
         }
 
         Iterator<T> end() { 
             // TODO
-            return nullptr;
+            return Iterator<T>(nullptr);
         }
 
         ~BSTree() {
