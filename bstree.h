@@ -53,15 +53,17 @@ class BSTree {
 
         }
 
+        // Hay casos donde falla
         bool remove(T data) {
             // TODO
             Node <T> **current = &(this->root);
             if(find(current,data)){
                 remove(current, data);
             }
-
+            // Falta return
         }
 
+        // Debería ser privado
         void remove(Node<T> **& current, T data){
 
             
@@ -106,6 +108,7 @@ class BSTree {
             
         }
 
+        // Debería ser privado
         Node<T>** getMax(Node <T> **temp){
             temp = &((*temp)->left);
             while((*temp)->right){
@@ -231,6 +234,7 @@ class BSTree {
         }
 
         void delet_all(Node<T>* current) {
+            // Mucho código repetido
             if(!current->right and current->left) {
                 delet_all(current->left);
             }

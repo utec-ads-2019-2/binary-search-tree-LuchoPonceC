@@ -20,6 +20,7 @@ class Iterator {
             current = stack_node.top();
         }
 
+        // Debería ser privado
         void insert_left(Node<T> *current){
             if(current){
                 stack_node.push(current);
@@ -39,6 +40,7 @@ class Iterator {
 
         bool operator!=(Iterator<T> other) {
             // TODO
+            // Comparar la data no es lo ideal porque un current podría ser null
             if(this->current->data != (other.current)->data){return true;}
             return false;
         }
@@ -48,6 +50,7 @@ class Iterator {
 
             this->current = stack_node.top();
             stack_node.pop();
+            // Hay doble validación
             if(this->current->right){
                 insert_left(current->right);
             }
